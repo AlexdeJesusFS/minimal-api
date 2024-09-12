@@ -1,0 +1,48 @@
+###gitignore for C#
+# Build Directories
+bin/
+obj/
+dist/
+publish/
+artifacts/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# macOS system files
+.DS_Store
+
+# IDE directories
+.vscode/
+.idea/
+*.sln.iml
+*.vs/
+
+# Rider specific files
+.idea_modules/
+
+# Log files
+*.log
+
+# Distribution packages
+*.nupkg
+*.snupkg
+
+# Backup files
+*.bak
+*.swp
+*.swo
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
