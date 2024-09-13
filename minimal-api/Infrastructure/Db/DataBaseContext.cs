@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 using minimal_api.Domain.Entities;
 
@@ -12,6 +13,19 @@ namespace minimal_api.Infrastructure.Db
         public DbSet<Admin> Adimins { get; set; } = default!;
 
         private readonly IConfiguration _configAppSettings;
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Admin>().HasData(
+                new Admin {
+                    Id = 1,
+                    Email = "adm@adm.com",
+                    Password = "123",
+                    Rule = "adm"
+                }
+
+            );
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

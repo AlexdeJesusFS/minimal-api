@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KUGmK86aZ5HFL2DFhqPbORSc3tUJlFGzeKRBqy4tRvdKWfoSZF2pkKrT8Dul7u2Lsf4+NNbp2o4sMt3KwKXqCQ==",
+  "dgSpecHash": "67fZRNmUzTfJUB3sDVRu/pNtF2sZdNNxT/StWKGgJOcr/gSpToEzJakpvdqmwrMbZtK5yktKJH42vjxgr+2n0w==",
   "success": true,
-  "projectFilePath": "/home/alexdejesus/bootcamp/bootcamp-XP-Inc.-Full-Stack-Developer/c_sharp/4. Construindo APIs com .NET C#/Desafios/ASP.NET_Minimals_APIs/minimal-api/minimal-api.csproj",
+  "projectFilePath": "/home/alexdejesus/bootcamp/bootcamp-XP-Inc.-Full-Stack-Developer/c_sharp/4. Construindo APIs com .NET C#/Desafios/ASP.NET-MINIMAL-API/minimal-api/minimal-api.csproj",
   "expectedPackageFiles": [
     "/home/alexdejesus/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/alexdejesus/.nuget/packages/microsoft.bcl.asyncinterfaces/6.0.0/microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

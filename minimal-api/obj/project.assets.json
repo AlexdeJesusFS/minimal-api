@@ -2311,11 +2311,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/alexdejesus/bootcamp/bootcamp-XP-Inc.-Full-Stack-Developer/c_sharp/4. Construindo APIs com .NET C#/Desafios/ASP.NET_Minimals_APIs/minimal-api/minimal-api.csproj",
+      "projectUniqueName": "/home/alexdejesus/bootcamp/bootcamp-XP-Inc.-Full-Stack-Developer/c_sharp/4. Construindo APIs com .NET C#/Desafios/ASP.NET-MINIMAL-API/minimal-api/minimal-api.csproj",
       "projectName": "minimal-api",
-      "projectPath": "/home/alexdejesus/bootcamp/bootcamp-XP-Inc.-Full-Stack-Developer/c_sharp/4. Construindo APIs com .NET C#/Desafios/ASP.NET_Minimals_APIs/minimal-api/minimal-api.csproj",
+      "projectPath": "/home/alexdejesus/bootcamp/bootcamp-XP-Inc.-Full-Stack-Developer/c_sharp/4. Construindo APIs com .NET C#/Desafios/ASP.NET-MINIMAL-API/minimal-api/minimal-api.csproj",
       "packagesPath": "/home/alexdejesus/.nuget/packages/",
-      "outputPath": "/home/alexdejesus/bootcamp/bootcamp-XP-Inc.-Full-Stack-Developer/c_sharp/4. Construindo APIs com .NET C#/Desafios/ASP.NET_Minimals_APIs/minimal-api/obj/",
+      "outputPath": "/home/alexdejesus/bootcamp/bootcamp-XP-Inc.-Full-Stack-Developer/c_sharp/4. Construindo APIs com .NET C#/Desafios/ASP.NET-MINIMAL-API/minimal-api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/alexdejesus/.nuget/NuGet/NuGet.Config"
