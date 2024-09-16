@@ -41,7 +41,8 @@ namespace minimal_api.Domain.Services
 
         public Admin? Login(LoginDTO loginDTO)
         {
-            return (_context.Adimins.Where(a => a.Email == loginDTO.Email && a.Password == loginDTO.Password).FirstOrDefault());
+        var adm = _context.Adimins.Where(a => a.Email == loginDTO.Email && a.Password == loginDTO.Password).FirstOrDefault();
+        return adm;        
         }
     }
 }
