@@ -48,4 +48,4 @@ ehthumbs.db
 $RECYCLE.BIN/
 
 # Minimal API
-.obj/
+obj/
