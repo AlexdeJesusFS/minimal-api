@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using Microsoft.OpenApi.Models;
 
 
 #region Builder
@@ -27,6 +28,8 @@ builder.Services.AddAuthentication(option => {
     option.TokenValidationParameters = new TokenValidationParameters{
         ValidateLifetime = true,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
+        ValidateAudience = false,
+        ValidateIssuer = false
     };
 });
 
@@ -35,8 +38,32 @@ builder.Services.AddAuthorization();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IVehicleService, VehicleService>();
 
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(option => {
+    option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme{
+        Name = "Autorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Type your JWT token here:"
+    });
+    option.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme{
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+});
+
 
 builder.Services.AddDbContext<DataBaseContext>(options => {
     options.UseMySql(builder.Configuration.GetConnectionString("mysql"),
@@ -46,7 +73,7 @@ var app = builder.Build();
 #endregion
 
 #region Home
-app.MapGet("/", () => Results.Json(new Home())).WithTags("Home");//WithTags → separa as rotas no swagger pelo nome indicado
+app.MapGet("/", () => Results.Json(new Home())).AllowAnonymous().WithTags("Home");//WithTags → separa as rotas no swagger pelo nome indicado
 #endregion
 
 #region Admin
@@ -81,7 +108,7 @@ app.MapPost("admin/login", ([FromBody] LoginDTO loginDTO, IAdminService adminSer
     } else {
         return Results.Unauthorized();
     }
-}).WithTags("Admin");
+}).AllowAnonymous().WithTags("Admin");
 
 app.MapGet("/admin", ([FromQuery] int? page, IAdminService adminService) => {
     var admins = new List<AdminModelView>();
