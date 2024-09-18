@@ -13,7 +13,7 @@ public class AdminServiceTest
 {
     private DataBaseContext CreateTestContext() 
     {
-        var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        //var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
         var builder = new ConfigurationBuilder()
             .SetBasePath(AppContext.BaseDirectory) // Usa o diretório base do app
@@ -26,7 +26,7 @@ public class AdminServiceTest
     }
 
     [TestMethod]
-    public void TestSalveAdmin()
+    public void TestAdd()
     {
         //arrange
         var context = CreateTestContext();
@@ -43,10 +43,34 @@ public class AdminServiceTest
         
         //act
         adminService.Add(adm);
-        
 
         //assert
         Assert.AreEqual(1, adminService.GetAll(1).Count);
+        
+    }
+
+    [TestMethod]
+    public void TestGetById()
+    {
+        //arrange
+        var context = CreateTestContext();
+        context.Database.ExecuteSqlRaw("TRUNCATE TABLE Adimins");
+
+        var adm = new Admin
+        {
+            Id = 1,
+            Email = "test@test.com",
+            Password = "test",
+            Rule = "Adm"
+        };
+        var adminService = new AdminService(context);
+        
+        //act
+        adminService.Add(adm);
+        var admin = adminService.GetById(adm.Id);
+        
+        //assert
+        Assert.AreEqual(1, admin.Id);
         
     }
 }
