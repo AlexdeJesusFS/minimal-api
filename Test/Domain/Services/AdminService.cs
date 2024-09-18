@@ -64,13 +64,12 @@ public class AdminServiceTest
             Rule = "Adm"
         };
         var adminService = new AdminService(context);
+        adminService.Add(adm);
         
         //act
-        adminService.Add(adm);
         var admin = adminService.GetById(adm.Id);
         
         //assert
-        Assert.AreEqual(1, admin.Id);
-        
+        Assert.AreEqual(1, admin.Id);   
     }
 }
