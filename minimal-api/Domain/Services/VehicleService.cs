@@ -24,22 +24,34 @@ namespace minimal_api.Domain.Services
 
         public List<Vehicle> GetAll(int? page, string? name = null, string? mark = null)
         {
-            var query = _context.Vehicles;
-            List<Vehicle> result = [];
-            if (!string.IsNullOrEmpty(name)) {
-                result = query.Where(v => v.Name.Contains(name.ToLower())).ToList();
+            // Iniciando a query
+            var query = _context.Vehicles.AsQueryable();  // Torna a query filtrável
+            
+            // Filtrar por nome se fornecido
+            if (!string.IsNullOrEmpty(name)) 
+            {
+                query = query.Where(v => v.Name.ToLower().Contains(name.ToLower()));
             }
-            if (!string.IsNullOrEmpty(mark)) {
-                //forma mais atual de realizar a busca ignorando Case e retornando uma Lista
-                result = [.. query.Where(v => v.Mark.Contains(mark, StringComparison.CurrentCultureIgnoreCase))]; 
+            
+            // Filtrar por marca se fornecido
+            if (!string.IsNullOrEmpty(mark)) 
+            {
+                query = query.Where(v => v.Mark.Contains(mark, StringComparison.CurrentCultureIgnoreCase));
             }
+            
+            // Definir o número de itens por página
             int itemsPage = 10;
 
-            if (page != null) {
-                return result.Skip((int)((page - 1) * itemsPage)).Take(itemsPage).ToList();
+            // Aplicar paginação se a página for fornecida
+            if (page != null) 
+            {
+                query = query.Skip((int)((page - 1) * itemsPage)).Take(itemsPage);
             }
+
+            // Retornar a lista final filtrada e/ou paginada
             return query.ToList();
         }
+
 
         public Vehicle? GetById(int id)
         {
