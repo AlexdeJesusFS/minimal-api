@@ -1,4 +1,5 @@
 using System.Net;
+using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text;
 using System.Text.Json;
@@ -18,6 +19,7 @@ namespace Test.Requests;
 [TestClass]
 public class AdminRequestTest
 {
+
     [ClassInitialize]
     public static void ClassInit(TestContext testContext)
     {
@@ -56,5 +58,6 @@ public class AdminRequestTest
         Assert.IsNotNull(admLogged?.Email ?? "");
         Assert.IsNotNull(admLogged?.Rule ?? "");
         Assert.IsNotNull(admLogged?.Token ?? "");
+
     }
 }
